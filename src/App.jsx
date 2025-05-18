@@ -7,8 +7,6 @@ import Navbar from "./components/Navbar";
 
 //Functional component for the app entry point
 const App = () => {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <ThemeProvider>
@@ -20,7 +18,7 @@ const App = () => {
       </ConversionProvider>
       </ThemeProvider>
     </>
-  )
+  );
 };
 
-export default App
+export default App;
