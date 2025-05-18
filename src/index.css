@@ -13,10 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.img{
-
-}
-
 .navbar {
   padding: 5px;
   background-color: #cfacac;
@@ -87,6 +83,12 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.humidityWindspeed{
+  fontSize: 0.9rem;
+  color: #666;
+  marginTop: 0.5rem;
 }
 
 .weather{

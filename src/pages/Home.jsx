@@ -2,6 +2,7 @@ import { useTheme } from "../context/ThemeContext";
 import React, { useState } from "react";
 import { useConversion } from "../context/ConversionContext";
 
+
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 const Home = () => {
@@ -58,7 +59,7 @@ const Home = () => {
 
   return (
     <div className={`home ${theme}`}>
-      <h2>Home Page</h2>
+      <h2>What is the weather like today?</h2>
       <input
         type="text"
         placeholder="Enter a city"
@@ -73,8 +74,12 @@ const Home = () => {
         <div className="weather">
           <h3>{weather.name}</h3>
           <p>{weather.weather[0].description}</p>
-          {/* <p>{kelvinToCelsius(weather.main.temp)}°C</p> */}
           <p>{kelvinToTemp(weather.main.temp)}</p>
+          <div className="humidityWindspeed">
+            <p>Humidity: {weather.main.humidity}%</p>
+            <p>Wind Speed: {weather.wind.speed} m/s</p>
+          </div>
+
           <img
             src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
             alt={weather.weather[0].description}
@@ -94,7 +99,6 @@ const Home = () => {
                   src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
                   alt="Forecast"
                 />
-                {/* <p>{kelvinToCelsius(item.main.temp)}°C</p> */}
                 <p>{kelvinToTemp(item.main.temp)}</p>
               </div>
             );
