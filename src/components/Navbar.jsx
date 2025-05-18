@@ -22,7 +22,6 @@ const Navbar = () => {
             <NavLink to="/sevenday">Seven Day Forecast</NavLink> |
             <NavLink to="/about">About</NavLink> | 
             <NavLink to="/notfound">Not Found</NavLink> | 
-            <NavLink to="/weatherapp">Weather App</NavLink> |
             <ToggleConversion/>
             <ToggleTheme /> 
         </nav>
