@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Outlet } from "react-router";
 import { ThemeProvider } from "./context/ThemeContext";
 import { ConversionProvider } from "./context/ConversionContext";
+import { CityProvider } from "./context/CityContext";
 import Navbar from "./components/Navbar";
 
 
@@ -11,10 +12,12 @@ const App = () => {
     <>
       <ThemeProvider>
       <ConversionProvider>
+      <CityProvider>
         <Navbar />
           <main>
             <Outlet />
           </main>
+      </CityProvider>
       </ConversionProvider>
       </ThemeProvider>
     </>

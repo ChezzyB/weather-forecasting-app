@@ -6,6 +6,7 @@ import About from "../pages/About";
 import City from "../pages/City";
 import NotFound from "../pages/NotFound";
 import SevenDay from "../pages/SevenDayForecast";
+import WeatherApp from "../pages/WeatherApp";
 
 const AppRoutes = () => {
     
@@ -15,6 +16,7 @@ const AppRoutes = () => {
       <Route path="about" element={<About />} />
       <Route path="city" element={<City />} />
       <Route path="sevenday" element={<SevenDay />} />
+      <Route path="weatherapp" element={<WeatherApp />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   );
