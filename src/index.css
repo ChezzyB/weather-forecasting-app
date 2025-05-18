@@ -86,9 +86,9 @@ button:focus-visible {
 }
 
 .humidityWindspeed{
-  fontSize: 0.9rem;
+  font-size: 0.9rem;
   color: #666;
-  marginTop: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .weather{

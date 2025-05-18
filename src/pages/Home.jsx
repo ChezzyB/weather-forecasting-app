@@ -58,55 +58,58 @@ const Home = () => {
   const kelvinToCelsius = (k) => Math.round(k - 273.15);
 
   return (
-    <div className={`home ${theme}`}>
-      <h2>What is the weather like today?</h2>
-      <input
-        type="text"
-        placeholder="Enter a city"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-      />
-      <button onClick={getWeather}>Get Weather</button>
+  <div className={`home ${theme}`}>
+    <h2>What is the weather like today?</h2>
+    <input
+      type="text"
+      placeholder="Enter a city"
+      value={city}
+      onChange={(e) => setCity(e.target.value)}
+    />
+    <button onClick={getWeather}>Get Weather</button>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      {weather && (
-        <div className="weather">
-          <h3>{weather.name}</h3>
-          <p>{weather.weather[0].description}</p>
-          <p>{kelvinToTemp(weather.main.temp)}</p>
-          <div className="humidityWindspeed">
-            <p>Humidity: {weather.main.humidity}%</p>
-            <p>Wind Speed: {weather.wind.speed} m/s</p>
+    {error ? (
+      <p style={{ color: "red" }}>{error}</p>
+    ) : (
+      <>
+        {weather && (
+          <div className="weather">
+            <h3>{weather.name}</h3>
+            <p>{weather.weather[0].description}</p>
+            <p>{kelvinToTemp(weather.main.temp)}</p>
+            <div className="humidityWindspeed">
+              <p>Humidity: {weather.main.humidity}%</p>
+              <p>Wind Speed: {weather.wind.speed} m/s</p>
+            </div>
+            <img
+              src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
+              alt={weather.weather[0].description}
+            />
           </div>
+        )}
 
-          <img
-            src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
-            alt={weather.weather[0].description}
-          />
-        </div>
-      )}
-
-      {forecast.length > 0 && (
-        <div className="hourlyWeather" >
-          {forecast.map((item, index) => {
-            const date = new Date(item.dt * 1000);
-            const hour = date.getHours();
-            return (
-              <div key={index} >
-                <p>{hour}:00</p>
-                <img
-                  src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
-                  alt="Forecast"
-                />
-                <p>{kelvinToTemp(item.main.temp)}</p>
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
+        {forecast.length > 0 && (
+          <div className="hourlyWeather">
+            {forecast.map((item, index) => {
+              const date = new Date(item.dt * 1000);
+              const hour = date.getHours();
+              return (
+                <div key={index}>
+                  <p>{hour}:00</p>
+                  <img
+                    src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
+                    alt="Forecast"
+                  />
+                  <p>{kelvinToTemp(item.main.temp)}</p>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </>
+    )}
+  </div>
+);
 
 
 };
