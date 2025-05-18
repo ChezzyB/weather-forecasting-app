@@ -1,11 +1,13 @@
 import { useTheme } from "../context/ThemeContext";
 import React, { useState } from "react";
+import { useConversion } from "../context/ConversionContext";
 
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 const Home = () => {
 
   const { theme } = useTheme();
+  const { theme: themeConversion } = useConversion();
   
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
@@ -44,6 +46,14 @@ const Home = () => {
     }
   };
 
+  const kelvinToTemp = (k) => {
+    if (themeConversion === "Celcius") {
+      return `${Math.round(k - 273.15)}°C`;
+    } else {
+      return `${Math.round((k - 273.15) * 9/5 + 32)}°F`;
+    }
+  };
+
   const kelvinToCelsius = (k) => Math.round(k - 273.15);
 
   return (
@@ -63,7 +73,8 @@ const Home = () => {
         <div className="weather">
           <h3>{weather.name}</h3>
           <p>{weather.weather[0].description}</p>
-          <p>{kelvinToCelsius(weather.main.temp)}°C</p>
+          {/* <p>{kelvinToCelsius(weather.main.temp)}°C</p> */}
+          <p>{kelvinToTemp(weather.main.temp)}</p>
           <img
             src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
             alt={weather.weather[0].description}
@@ -83,7 +94,8 @@ const Home = () => {
                   src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
                   alt="Forecast"
                 />
-                <p>{kelvinToCelsius(item.main.temp)}°C</p>
+                {/* <p>{kelvinToCelsius(item.main.temp)}°C</p> */}
+                <p>{kelvinToTemp(item.main.temp)}</p>
               </div>
             );
           })}
