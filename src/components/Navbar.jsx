@@ -18,8 +18,9 @@ const Navbar = () => {
                     <img src={rainbowLogo} className="logo" alt="Rainbow logo" />
                 </a>        
             </div>
-        {/* <Link to="/">Home</Link>
-        <Link to="/about">About</Link> */}
+        {/* <NavLink to="/">Home</NavLink> | 
+        <NavLink to="/city">City</NavLink> | 
+        <NavLink to="/about">About</NavLink> |  */}
         <ToggleConversion/>
         <ToggleTheme /> 
         </nav>
